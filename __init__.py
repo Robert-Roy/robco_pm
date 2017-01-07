@@ -1,4 +1,4 @@
-__author__ = 'The Duck'
+__author__ = 'Robert Roy'
 
 import hashlib
 import os
@@ -6,7 +6,6 @@ import tkinter
 
 
 class CommandInterpreter:
-    # TODO Remove case sensitivity on commands, but leave intact on parameter feed
     def __init__(self, output_function):
         if not hasattr(output_function, "__call__"):
             raise ValueError("An attempt has been made to pass a non-callable value as command_function")
@@ -191,7 +190,6 @@ class ReusableTextParser:
 
 class File:
     def __init__(self, file_path):
-        # TODO Create a soft open and a force open mechanism to initialize this class
         # Simple class created to make file creation reading/writing easier.
         # file_path is a string, should be in the form "c:/folder/file.extension"
         # exists indicates whether or not the file already exists
@@ -357,40 +355,3 @@ command_interpreter.add_command("EXIT", exit_function, "exits the program.")
 command_interpreter.describe_functions()
 while True:
     command_interpreter.run_command(input("User>"))
-master_key_input = input("Please enter the master key: ")
-acceptable_input = False
-while not acceptable_input:
-    if isinstance(master_key_input, str):
-        acceptable_input = True
-        print("This is a string")
-    else:
-        print("This ain't no string")
-parser = ReusableTextParser("", "", 5)
-parser.get_sha1_hash(master_key_input)
-print(parser.get_sha1_hash(master_key_input))
-is_complex_password("Test")
-print("Is that a complex password?" + str(is_complex_password(master_key_input)))
-
-"""
-        self.set_key("SampleKey")
-        key = self.key
-        sample_raw_input = ""
-        for counter in range(1, 10):
-            sample_raw_input += "Username" + str(counter) + key + "Password" + \
-                                str(counter) + key + "Description" + str(counter) + key
-        self.set_data(sample_raw_input)
-"""
-
-# TODO Generate a means of saving/loading data
-# TODO Enable adding, modifying, and deleting records from the database
-# TODO Find some means of conveniently storing the settings from the .ini file
-# TODO Implement settings with built in .ini file
-# TODO Create an exit protocol that saves settings, closes files, and backs up data
-# TODO create pw concealing decode system that will not do a final decode on pws
-# TODO create interfaces for interaction such as -add Username, Password, Description
-# TODO create interfaces -delete [index], -help, -deleteall, -save
-# TODO implement installer and uninstaller
-# TODO create GUI
-# TODO allow storage to a DBLite instance
-# TODO Create child class for text parser for this particular program
-# TODO ******* ASAP Make debug functions silent using ValueError unless verbose is on. Make verbose require an output method.
